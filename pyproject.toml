@@ -1,10 +1,10 @@
 [project]
 name = "ai-aml-investigation-assistant"
-version = "0.1.0"
+version = "0.1.1"
 description = "Enterprise-style AML investigation decision-support assistant"
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "Open Source Maintainer" }]
 dependencies = [
   "fastapi>=0.115.0",
@@ -29,6 +29,16 @@ dev = [
   "ruff>=0.6.0",
   "mypy>=1.11.0"
 ]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["alembic*", "tests*", "examples*", "docs*", "scripts*"]
+
+[tool.setuptools.package-data]
+app = ["prompts/*.md"]
 
 [tool.ruff]
 line-length = 100

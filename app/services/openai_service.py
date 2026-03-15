@@ -12,7 +12,7 @@ class OpenAIService:
         self.client = OpenAI(
             api_key=settings.openai_api_key, timeout=settings.openai_request_timeout_seconds
         )
-        self.prompt_dir = Path("app/prompts")
+        self.prompt_dir = Path(__file__).resolve().parent.parent / "prompts"
 
     def _read_prompt(self, name: str) -> str:
         return (self.prompt_dir / name).read_text(encoding="utf-8")
